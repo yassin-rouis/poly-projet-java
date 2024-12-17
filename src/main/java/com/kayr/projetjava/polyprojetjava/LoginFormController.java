@@ -32,12 +32,12 @@ public class LoginFormController {
     protected void handleSubmitButtonAction(ActionEvent event) throws SQLException {
         Window owner = submitButton.getScene().getWindow();
         if (emailField.getText().isEmpty()) {
-            AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Formulaire incorrecte!",
+            AlertWindow.showAlert(Alert.AlertType.ERROR, owner, "Formulaire incorrecte!",
                     "Entrez votre email");
             return;
         }
         if (passwordField.getText().isEmpty()) {
-            AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Formulaire incorrecte!",
+            AlertWindow.showAlert(Alert.AlertType.ERROR, owner, "Formulaire incorrecte!",
                     "Entrez votre mot de passe");
             return;
         }
@@ -56,7 +56,7 @@ public class LoginFormController {
                 throw new RuntimeException(e);
             }
         } else {
-            AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Oups...",
+            AlertWindow.showAlert(Alert.AlertType.ERROR, owner, "Oups...",
                     "Nom d'utilisateur ou mot de passe incorrect");
         }
     }

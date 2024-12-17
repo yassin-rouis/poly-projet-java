@@ -2,26 +2,13 @@ package com.kayr.projetjava.polyprojetjava;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Objects;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-import javafx.util.Duration;
 
-public class KAYRApp extends Application {
+public class Main extends Application {
 
     private Stage stage;
 
@@ -37,7 +24,6 @@ public class KAYRApp extends Application {
         this.stage = stage;
         stage.setScene(splash.getSplashScene());
         splash.getAnimation().setOnFinished(e -> {
-            Label label = new Label("Bienvenue dans la nouvelle fenêtre !");
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("login_form.fxml"));
                 GridPane root = loader.load();
@@ -51,6 +37,7 @@ public class KAYRApp extends Application {
         });
 //
         stage.show();
+        
     }
 
     public static void main(String[] args) {

@@ -3,10 +3,7 @@ package com.kayr.projetjava.polyprojetjava;
 import javafx.scene.control.Alert;
 import javafx.stage.Window;
 
-/**
- * Created by rajeevkumarsingh on 02/05/17.
- */
-public class AlertHelper {
+public class AlertWindow {
 
     public static void showAlert(Alert.AlertType alertType, Window owner, String title, String message) {
         Alert alert = new Alert(alertType);

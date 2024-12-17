@@ -4,7 +4,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.chart.PieChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -28,23 +27,23 @@ public class RegistrationFormController {
     protected void handleSubmitButtonAction(ActionEvent event) throws SQLException {
         Window owner = submitButton.getScene().getWindow();
         if (nameField.getText().isEmpty()) {
-            AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Formulaire incorrecte!",
+            AlertWindow.showAlert(Alert.AlertType.ERROR, owner, "Formulaire incorrecte!",
                     "Entrez votre nom");
             return;
         }
         if (emailField.getText().isEmpty()) {
-            AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Formulaire incorrecte!",
+            AlertWindow.showAlert(Alert.AlertType.ERROR, owner, "Formulaire incorrecte!",
                     "Entrez votre email");
             return;
         }
         if (passwordField.getText().isEmpty()) {
-            AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Formulaire incorrecte!",
+            AlertWindow.showAlert(Alert.AlertType.ERROR, owner, "Formulaire incorrecte!",
                     "Entrez votre mot de passe");
             return;
         }
 
         if(Database.registerUser(emailField.getText(), passwordField.getText(), nameField.getText()) != 0) {
-            AlertHelper.showAlert(Alert.AlertType.CONFIRMATION, owner, "Créé",
+            AlertWindow.showAlert(Alert.AlertType.CONFIRMATION, owner, "Créé",
                     "Votre compte est créé !");
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("interface.fxml"));
@@ -59,7 +58,7 @@ public class RegistrationFormController {
                 throw new RuntimeException(e);
             }
         } else {
-            AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "Oups...",
+            AlertWindow.showAlert(Alert.AlertType.ERROR, owner, "Oups...",
                     "Une erreur est survenue...");
         }
     }

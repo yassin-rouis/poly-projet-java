@@ -33,13 +33,6 @@ public class Splash
 
     public void show()
     {
-        /*
-         * Part 1:
-         * This is the rolling square animation.
-         * This animation looks cool for a loading screen,
-         * so I made this. Only the lines of code for fading
-         * from Stack Overflow.
-         */
         Image image = new Image("/ka.jpg");
         ImageView imageView = new ImageView(image);
         imageView.setFitWidth(400);
