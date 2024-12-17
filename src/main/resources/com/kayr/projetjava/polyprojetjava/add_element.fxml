@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+
+<?import javafx.scene.text.Font?>
+<GridPane fx:controller="com.kayr.projetjava.polyprojetjava.AddElement"
+          xmlns:fx="http://javafx.com/fxml" alignment="center"
+          prefHeight="300.0" prefWidth="400.0"
+          hgap="10" vgap="10">
+<padding>
+    <Insets top="40" right="40" bottom="40" left="40"/></padding>
+<columnConstraints>
+    <ColumnConstraints minWidth="100" prefWidth="100"
+                       maxWidth="Infinity" halignment="RIGHT">
+    </ColumnConstraints>
+    <ColumnConstraints minWidth="200" prefWidth="200"
+                       maxWidth="Infinity" hgrow="ALWAYS">
+    </ColumnConstraints>
+</columnConstraints>
+
+<!-- Add Header Label -->
+<Label text="Ajout d'un article" GridPane.columnIndex="0"
+       GridPane.rowIndex="0" GridPane.columnSpan="2"
+       GridPane.rowSpan="1" GridPane.halignment="CENTER" >
+    <font>
+        <Font name="Arial" size="24" ></Font>
+    </font>
+    <GridPane.margin>
+        <Insets top="20" right="0" bottom="20" left="0"></Insets>
+    </GridPane.margin>
+</Label>
+
+<Label text="Nom de l'article" GridPane.columnIndex="0"
+       GridPane.rowIndex="1" >
+</Label>
+<TextField fx:id="articleName" prefHeight="40"
+           GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+
+<Label text="Catégorie : " GridPane.columnIndex="0"
+       GridPane.rowIndex="2" >
+</Label>
+<TextField fx:id="articleCategorie" prefHeight="40"
+           GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+
+<Label text="Prix : " GridPane.columnIndex="0"
+       GridPane.rowIndex="3" >
+</Label>
+<PasswordField fx:id="articlePrix" prefHeight="40"
+               GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+
+<GridPane
+        GridPane.columnIndex="1" GridPane.rowIndex="4"
+>
+    <Button fx:id="ajouterButton" text="Ajouter l'article"
+            prefWidth="400" prefHeight="40" defaultButton="true"
+            GridPane.columnIndex="0" GridPane.rowIndex="0"
+            GridPane.halignment="CENTER"
+            onAction="#ajouterArticle">
+        <GridPane.margin>
+            <Insets top="20" right="0" bottom="20" left="0"></Insets>
+        </GridPane.margin>
+    </Button>
+    <Button fx:id="annulerButton" text="Annuler"
+            prefWidth="400" prefHeight="40"
+            GridPane.columnIndex="1" GridPane.rowIndex="0"
+            GridPane.halignment="CENTER"
+            onAction="#fermer">
+        <GridPane.margin>
+            <Insets top="20" right="0" bottom="20" left="0"></Insets>
+        </GridPane.margin>
+    </Button>
+</GridPane>
+</GridPane>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
+<GridPane xmlns="http://javafx.com/javafx"
+          fx:id="grid"
+          xmlns:fx="http://javafx.com/fxml"
+          stylesheets="@styles.css"
+          fx:controller="com.kayr.projetjava.polyprojetjava.Interface"
+          prefHeight="600.0" prefWidth="800.0">
+    <Label text="Accueil"
+           fx:id="label_accueil" GridPane.columnIndex="0"
+           GridPane.rowIndex="0" GridPane.columnSpan="5"
+           GridPane.rowSpan="1" GridPane.halignment="CENTER" >
+        <font>
+            <Font name="Arial" size="24"></Font>
+        </font>
+        <GridPane.margin>
+            <Insets top="20" right="0" bottom="20" left="0"></Insets>
+        </GridPane.margin>
+    </Label>
+    <Label text="NOM"
+           fx:id="label_article"
+           styleClass="title"
+           GridPane.columnIndex="0"
+           prefWidth="400.0"
+           GridPane.rowIndex="2">
+    </Label>
+    <Label text="PRIX"
+           fx:id="label_prix"
+           styleClass="title"
+           prefWidth="100.0"
+           GridPane.columnIndex="1"
+           GridPane.rowIndex="2">
+    </Label>
+    <Label text="CATEGORIE"
+           styleClass="title"
+           prefWidth="100.0"
+           fx:id="label_categorie"
+           GridPane.columnIndex="2"
+           GridPane.rowIndex="2">
+    </Label>
+    <Label text="ACTIONS"
+           styleClass="title"
+           fx:id="label_actions"
+           prefWidth="200.0"
+           GridPane.columnIndex="3"
+           GridPane.columnSpan="1"
+           GridPane.rowIndex="2">
+    </Label>
+    <Button fx:id="addElement" text="Ajouter un article"
+            defaultButton="true"
+            GridPane.columnSpan="5"
+            GridPane.columnIndex="0" GridPane.rowIndex="10000"
+            GridPane.halignment="CENTER"
+            prefWidth="400.0"
+            onAction="#addElement">
+        <font>
+            <Font name="Arial" size="16"/>
+        </font>
+    </Button>
+    <GridPane.margin>
+        <Insets top="20" right="0" bottom="20" left="0"></Insets>
+    </GridPane.margin>
+</GridPane>
