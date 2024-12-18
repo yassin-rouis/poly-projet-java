@@ -9,13 +9,9 @@ public class Database {
     private static Connection cnx;
     private static boolean is_admin = false;
 
-    public static void init() {
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            cnx = DriverManager.getConnection("jdbc:mysql://localhost/kayr", "root", "");
-        } catch (Exception e) {
-            throw new Error(e);
-        }
+    public static void init() throws Exception {
+        Class.forName("com.mysql.jdbc.Driver");
+        cnx = DriverManager.getConnection("jdbc:mysql://localhost/kayr", "root", "");
     }
 
     public static List<User> getUsers() throws SQLException {

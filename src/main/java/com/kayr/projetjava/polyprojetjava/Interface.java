@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -19,6 +20,7 @@ public class Interface {
     public Button refreshList;
 
     public void addElement(ActionEvent event) {
+        Window owner = grid.getScene().getWindow();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("add_element.fxml"));
         try {
             GridPane root = loader.load();
@@ -32,7 +34,8 @@ public class Interface {
                 try {
                     refresh();
                 } catch (SQLException ex) {
-                    throw new RuntimeException(ex);
+                    AlertWindow.showAlert(Alert.AlertType.ERROR, owner, "Oups...",
+                            "Erreur dans la base de donnée...");
                 }
             });
             stage.show();
@@ -42,6 +45,7 @@ public class Interface {
     }
 
     public void refresh() throws SQLException {
+        Window owner = grid.getScene().getWindow();
         List<Article> list = Database.getArticles();
         if(Database.isAdmin()) {
             grid.getChildren().removeIf(n -> n.getId() == null || !(
@@ -73,7 +77,8 @@ public class Interface {
                         Database.removeArticle(a.id());
                         refresh();
                     } catch (Exception ex) {
-                        throw new RuntimeException(ex);
+                        AlertWindow.showAlert(Alert.AlertType.ERROR, owner, "Oups...",
+                                "Erreur dans la base de donnée...");
                     }
                 });
                 grid.add(supprimer, 3, i+4);
@@ -84,6 +89,12 @@ public class Interface {
 
 
     public void refreshList(ActionEvent event) throws SQLException {
-        refresh();
+        Window owner = grid.getScene().getWindow();
+        try {
+            refresh();
+        } catch (Exception ex) {
+            AlertWindow.showAlert(Alert.AlertType.ERROR, owner, "Oups...",
+                    "Erreur dans la base de donnée...");
+        }
     }
 }
