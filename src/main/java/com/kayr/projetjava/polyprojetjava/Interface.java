@@ -16,6 +16,7 @@ public class Interface {
     public Button addElement;
     public GridPane grid;
     public Label label_accueil;
+    public Button refreshList;
 
     public void addElement(ActionEvent event) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("add_element.fxml"));
@@ -42,7 +43,9 @@ public class Interface {
 
     public void refresh() throws SQLException {
         List<Article> list = Database.getArticles();
-        grid.getChildren().removeIf(n -> n.getId() == null || !(n.getId().equalsIgnoreCase("addElement") || n.getId().startsWith("label_")));
+        grid.getChildren().removeIf(n -> n.getId() == null || !(
+                n.getId().equalsIgnoreCase("addElement") || n.getId().startsWith("label_") || n.getId().equalsIgnoreCase("refreshList")
+        ));
         int i = 0;
         for (Article a : list) {
             Label name = new Label(a.name());
@@ -69,5 +72,10 @@ public class Interface {
             grid.add(supprimer, 3, i+4);
             i+=1;
         }
+    }
+
+
+    public void refreshList(ActionEvent event) throws SQLException {
+        refresh();
     }
 }

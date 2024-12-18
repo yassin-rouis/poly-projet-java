@@ -59,8 +59,18 @@
             GridPane.columnSpan="5"
             GridPane.columnIndex="0" GridPane.rowIndex="10000"
             GridPane.halignment="CENTER"
-            prefWidth="400.0"
+            prefWidth="200.0"
             onAction="#addElement">
+        <font>
+            <Font name="Arial" size="16"/>
+        </font>
+    </Button>
+    <Button fx:id="refreshList" text="Refresh"
+            GridPane.columnSpan="5"
+            GridPane.columnIndex="0" GridPane.rowIndex="10001"
+            GridPane.halignment="CENTER"
+            prefWidth="200.0"
+            onAction="#refreshList">
         <font>
             <Font name="Arial" size="16"/>
         </font>
