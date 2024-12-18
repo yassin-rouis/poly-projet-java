@@ -7,6 +7,7 @@ import java.util.function.Predicate;
 
 public class Database {
     private static Connection cnx;
+    private static boolean is_admin = false;
 
     public static void init() {
         try {
@@ -35,7 +36,14 @@ public class Database {
         p.setString(2, password);
         ResultSet rs = p.executeQuery();
 
-        return rs.next();
+        boolean res = rs.next();
+
+        if(res) {
+            is_admin = rs.getBoolean("is_admin");
+        } else {
+            is_admin = false;
+        }
+        return res;
     }
 
     public static boolean existsUser(String email) throws SQLException {
@@ -85,6 +93,10 @@ public class Database {
         PreparedStatement p = cnx.prepareStatement("DELETE FROM kayr.articles WHERE id=?");
         p.setInt(1, id);
         return p.executeUpdate() > 0;
+    }
+
+    public static boolean isAdmin() {
+        return is_admin;
     }
 
 }

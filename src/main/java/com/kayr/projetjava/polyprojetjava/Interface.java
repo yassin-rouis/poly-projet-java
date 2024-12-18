@@ -43,24 +43,20 @@ public class Interface {
 
     public void refresh() throws SQLException {
         List<Article> list = Database.getArticles();
-        grid.getChildren().removeIf(n -> n.getId() == null || !(
-                n.getId().equalsIgnoreCase("addElement") || n.getId().startsWith("label_") || n.getId().equalsIgnoreCase("refreshList")
-        ));
+        if(Database.isAdmin()) {
+            grid.getChildren().removeIf(n -> n.getId() == null || !(
+                    n.getId().equalsIgnoreCase("addElement") || n.getId().startsWith("label_") || n.getId().equalsIgnoreCase("refreshList")
+            ));
+        } else {
+            grid.getChildren().removeIf(n -> n.getId() == null || !(
+                    n.getId().startsWith("label_") || n.getId().equalsIgnoreCase("refreshList")
+            ));
+        }
         int i = 0;
         for (Article a : list) {
             Label name = new Label(a.name());
             Label prix = new Label(a.prix().toString() + " TND");
             Label cat = new Label(a.categorie());
-            Button supprimer = new Button("Supprimer");
-
-            supprimer.setOnAction(e -> {
-                try {
-                    Database.removeArticle(a.id());
-                    refresh();
-                } catch (Exception ex) {
-                    throw new RuntimeException(ex);
-                }
-            });
 
             name.getStyleClass().add("article");
             prix.getStyleClass().add("article");
@@ -69,7 +65,19 @@ public class Interface {
             grid.add(name, 0, i+4);
             grid.add(prix, 1, i+4);
             grid.add(cat, 2, i+4);
-            grid.add(supprimer, 3, i+4);
+            if(Database.isAdmin()) {
+                Button supprimer = new Button("Supprimer");
+
+                supprimer.setOnAction(e -> {
+                    try {
+                        Database.removeArticle(a.id());
+                        refresh();
+                    } catch (Exception ex) {
+                        throw new RuntimeException(ex);
+                    }
+                });
+                grid.add(supprimer, 3, i+4);
+            }
             i+=1;
         }
     }
